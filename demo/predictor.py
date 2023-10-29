@@ -22,7 +22,6 @@ from detectron2.checkpoint import DetectionCheckpointer
 import detectron2.data.transforms as T
 from adet.data.augmentation import Pad
 
-import pdb; pdb.set_trace()
 
 class VisualizationDemo(object):
     def __init__(self, cfg, instance_mode=ColorMode.IMAGE, parallel=False):
@@ -33,6 +32,9 @@ class VisualizationDemo(object):
             parallel (bool): whether to run the model in different processes from visualization.
                 Useful since the visualization logic can be slow.
         """
+        
+        breakpoint()
+
         self.metadata = MetadataCatalog.get(
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
         )

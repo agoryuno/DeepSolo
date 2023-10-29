@@ -1,4 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+
+
 import numpy as np
 import atexit
 import bisect
@@ -20,6 +22,7 @@ from detectron2.checkpoint import DetectionCheckpointer
 import detectron2.data.transforms as T
 from adet.data.augmentation import Pad
 
+import pdb; pdb.set_trace()
 
 class VisualizationDemo(object):
     def __init__(self, cfg, instance_mode=ColorMode.IMAGE, parallel=False):

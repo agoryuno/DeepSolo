@@ -33,8 +33,6 @@ class VisualizationDemo(object):
                 Useful since the visualization logic can be slow.
         """
         
-        breakpoint()
-
         self.metadata = MetadataCatalog.get(
             cfg.DATASETS.TEST[0] if len(cfg.DATASETS.TEST) else "__unused"
         )

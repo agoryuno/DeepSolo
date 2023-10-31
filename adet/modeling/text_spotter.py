@@ -185,7 +185,6 @@ class TransformerPureDetector(nn.Module):
         """
         Normalize, pad and batch the input images.
         """
-        breakpoint()
         images = [self.normalizer(x["image"].to(self.device)) for x in batched_inputs]
         images = ImageList.from_tensors(images)
         return images
@@ -206,7 +205,6 @@ class TransformerPureDetector(nn.Module):
                 * "height", "width" (int): the output resolution of the model, used in inference.
                   See :meth:`postprocess` for details.
         """
-        breakpoint()
         images = self.preprocess_image(batched_inputs)
         if self.training:
             gt_instances = [x["instances"].to(self.device) for x in batched_inputs]

@@ -3,7 +3,7 @@
 # modified from https://github.com/SwinTransformer/Swin-Transformer-Object-Detection/blob/master/mmdet/models/backbones/swin_transformer.py
 # --------------------------------------------------------
 
-from abc import ABCMeta
+from abc import ABCMeta, abstractmethod
 
 import torch
 import torch.nn as nn

@@ -73,12 +73,17 @@ class ViTAEv2(Backbone):
         depth = np.sum(self.NC_depth)
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
         Layers = []
+        breakpoint()
         for i in range(stages):
             startDpr = 0 if i==0 else self.NC_depth[i - 1]
             Layers.append(
-                BasicLayer(img_size, in_chans, self.embed_dims[i], self.tokens_dims[i], self.downsample_ratios[i],
-                self.kernel_size[i], self.RC_heads[i], self.NC_heads[i], self.dilaions[i], self.RC_op[i],
-                self.RC_tokens_type[i], self.NC_tokens_type[i], self.RC_group[i], self.NC_group[i], self.NC_depth[i], dpr[startDpr:self.NC_depth[i]+startDpr],
+                BasicLayer(
+                    img_size, in_chans, self.embed_dims[i], self.tokens_dims[i], 
+                    self.downsample_ratios[i], self.kernel_size[i], 
+                    self.RC_heads[i], self.NC_heads[i], self.dilaions[i], 
+                    self.RC_op[i], self.RC_tokens_type[i], self.NC_tokens_type[i], 
+                    self.RC_group[i], self.NC_group[i], self.NC_depth[i], 
+                    dpr[startDpr:self.NC_depth[i]+startDpr],
                 mlp_ratio=self.mlp_ratio[i], qkv_bias=self.qkv_bias[i], qk_scale=self.qk_scale[i], drop=self.drop[i], attn_drop=self.attn_drop[i],
                 norm_layer=self.norm_layer[i], window_size=window_size, use_checkpoint=use_checkpoint)
             )

@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import copy
 from adet.utils.misc import accuracy, is_dist_avail_and_initialized
-from .utils import get_world_size
+from detectron2.utils.comm import get_world_size
 from adet.utils.curve_utils import BezierSampler
 
 

@@ -12,9 +12,6 @@ from .utils import ShapeSpec
 from .swin_transformer import BasicLayer, Backbone
 
 
-
-
-
 class ViTAEv2(Backbone):
     def __init__(self,
                 img_size=224,

@@ -10,8 +10,8 @@ from timm.models.layers import trunc_normal_
 
 from .NormalCell import NormalCell
 from .ReductionCell import ReductionCell
-from .utils import ShapeSpec
-from .swin_transformer import Backbone
+from ..utils import ShapeSpec
+from ..swin_transformer import Backbone
 
 
 class PatchEmbedding(nn.Module):

@@ -14,8 +14,7 @@ import torch.nn.functional as F
 from torch.nn.init import xavier_uniform_, constant_
 from torch.autograd.function import once_differentiable
 
-from adet import _C
-import sys
+from adet_layers import _C
 
 class _MSDeformAttnFunction(torch.autograd.Function):
     @staticmethod

@@ -7,8 +7,8 @@ import torch
 torch_ver = [int(x) for x in torch.__version__.split(".")[:2]]
 assert torch_ver >= [2, 0], "Requires PyTorch >= 2.0"
 
-WHEEL_URLS = {(3,10): "https://github.com/agoryuno/adet_layers/raw/main/wheels/adet_layers-0.0.1-cp310-linux_x86_64.whl",
-              (3,11): "https://github.com/agoryuno/adet_layers/raw/main/wheels/adet_layers-0.0.1-cp311-linux_x86_64.whl"}
+WHEEL_URLS = {(3,10): "https://github.com/agoryuno/adet_layers/raw/main/wheels/adet_layers-0.0.1-cp310-cp310-linux_x86_64.whl",
+              (3,11): "https://github.com/agoryuno/adet_layers/raw/main/wheels/adet_layers-0.0.1-cp311-cp311-linux_x86_64.whl"}
 
 def get_wheel(wheels=WHEEL_URLS):
     major = sys.version_info.major

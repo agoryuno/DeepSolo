@@ -27,7 +27,7 @@ setup(
     description="A stripped down version of the original "
         " DeepSolo model's codebase, with most dependencies removed or "
         " repackaged separately.",
-    packages=find_packages("deepsolo_onnx"),
+    packages=find_packages(exclude=["adet", "adet.*"]),
     python_requires=">=3.10, <3.12",
     install_requires=[
         f"adet_layers @ {get_wheel()}",

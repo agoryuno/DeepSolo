@@ -1,1 +1,1 @@
-from .vitaev2 import build_backbone
+from .vitaev2 import build_backbone, ViTAEv2

@@ -30,7 +30,8 @@ setup(
     packages=["deepsolo_onnx"],
     python_requires=">=3.10, <3.12",
     install_requires=[
-        f"adet_layers @ {get_wheel()}"
+        f"adet_layers @ {get_wheel()}",
+        "git+https://github.com/agoryuno/dconfig"
     ],
     extras_require={"all": ["psutil"]}
 )

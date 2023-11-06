@@ -26,12 +26,12 @@ setup(
     url="https://github.com/agoryuno/deepsolo_onnx",
     description="A stripped down version of the original "
         " DeepSolo model's codebase, with most dependencies removed or "
-        " repackaged separately",
+        " repackaged separately.",
     packages=["deepsolo_onnx"],
     python_requires=">=3.10, <3.12",
     install_requires=[
         f"adet_layers @ {get_wheel()}",
-        #"git+https://github.com/agoryuno/dconfig"
+        "git+https://github.com/agoryuno/dconfig"
     ],
     extras_require={"all": ["psutil"]}
 )

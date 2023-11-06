@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-from setuptools import setup
+from setuptools import setup, find_packages
 import torch
 
 torch_ver = [int(x) for x in torch.__version__.split(".")[:2]]
@@ -27,7 +27,7 @@ setup(
     description="A stripped down version of the original "
         " DeepSolo model's codebase, with most dependencies removed or "
         " repackaged separately.",
-    packages=["deepsolo_onnx"],
+    packages=find_packages("deepsolo_onnx"),
     python_requires=">=3.10, <3.12",
     install_requires=[
         f"adet_layers @ {get_wheel()}",

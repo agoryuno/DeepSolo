@@ -31,6 +31,7 @@ setup(
     python_requires=">=3.10, <3.12",
     install_requires=[
         "torch",
+        "fvcore",
         "timm",
         f"adet_layers @ {get_wheel()}",
         "dconfig @ git+https://github.com/agoryuno/dconfig"

@@ -167,8 +167,10 @@ class ViTAEv2(Backbone):
                     self.RC_op[i], self.RC_tokens_type[i], self.NC_tokens_type[i], 
                     self.RC_group[i], self.NC_group[i], self.NC_depth[i], 
                     dpr[startDpr:self.NC_depth[i]+startDpr],
-                    mlp_ratio=self.mlp_ratio[i], qkv_bias=self.qkv_bias[i], qk_scale=self.qk_scale[i], drop=self.drop[i], attn_drop=self.attn_drop[i],
-                    norm_layer=self.norm_layer[i], window_size=window_size, use_checkpoint=use_checkpoint
+                    mlp_ratio=self.mlp_ratio[i], qkv_bias=self.qkv_bias[i], 
+                    qk_scale=self.qk_scale[i], drop=self.drop[i], 
+                    attn_drop=self.attn_drop[i], norm_layer=self.norm_layer[i], 
+                    window_size=window_size, use_checkpoint=use_checkpoint
                 )
             )
             img_size = img_size // self.downsample_ratios[i]
@@ -232,10 +234,10 @@ class ViTAEv2(Backbone):
     
 
 def build_backbone(cfg) -> ViTAEv2:
-    vitaev2_type = cfg.MODEL.ViTAEv2.TYPE
+    #vitaev2_type = cfg.MODEL.ViTAEv2.TYPE
 
-    assert vitaev2_type == 'vitaev2_s', (f"Wrong ViTAEv2 model type: '{vitaev2_type}'. "
-                                         f"Only 'vitaev2_s' is supported.")
+    #assert vitaev2_type == 'vitaev2_s', (f"Wrong ViTAEv2 model type: '{vitaev2_type}'. "
+    #                                     f"Only 'vitaev2_s' is supported.")
     return ViTAEv2(
         in_chans=3,
         RC_tokens_type=['window', 'window', 'transformer', 'transformer'],

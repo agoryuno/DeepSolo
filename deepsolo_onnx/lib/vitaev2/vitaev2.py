@@ -49,10 +49,14 @@ class PatchEmbedding(nn.Module):
 
 
 class BasicLayer(nn.Module):
-    def __init__(self, img_size=224, in_chans=3, embed_dims=64, token_dims=64, downsample_ratios=4, kernel_size=7, RC_heads=1, NC_heads=6, dilations=[1, 2, 3, 4],
-                RC_op='cat', RC_tokens_type='performer', NC_tokens_type='transformer', RC_group=1, NC_group=64, NC_depth=2, dpr=0.1, mlp_ratio=4., qkv_bias=True,
-                qk_scale=None, drop=0, attn_drop=0., norm_layer=nn.LayerNorm, class_token=False, gamma=False, init_values=1e-4, SE=False, window_size=7,
-                use_checkpoint=False):
+    def __init__(self, img_size=224, in_chans=3, embed_dims=64, token_dims=64, 
+                 downsample_ratios=4, kernel_size=7, RC_heads=1, NC_heads=6, 
+                 dilations=[1, 2, 3, 4], RC_op='cat', RC_tokens_type='performer', 
+                 NC_tokens_type='transformer', RC_group=1, NC_group=64, 
+                 NC_depth=2, dpr=0.1, mlp_ratio=4., qkv_bias=True, qk_scale=None, 
+                 drop=0, attn_drop=0., norm_layer=nn.LayerNorm, 
+                 class_token=False, gamma=False, init_values=1e-4, SE=False, 
+                 window_size=7, use_checkpoint=False):
         super().__init__()
         self.img_size = img_size
         self.in_chans = in_chans

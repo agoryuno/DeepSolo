@@ -157,7 +157,6 @@ class ViTAEv2(Backbone):
         depth = np.sum(self.NC_depth)
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
         Layers = []
-        breakpoint()
         for i in range(stages):
             startDpr = 0 if i==0 else self.NC_depth[i - 1]
             Layers.append(

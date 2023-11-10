@@ -580,7 +580,6 @@ class TransformerPureDetector(nn.Module):
                 * "height", "width" (int): the output resolution of the model, used in inference.
                   See :meth:`postprocess` for details.
         """
-        breakpoint()
         images = self.preprocess_image(batched_inputs)
         output = self.detection_transformer(images)
         ctrl_point_cls = output["pred_logits"]

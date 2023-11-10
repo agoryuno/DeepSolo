@@ -194,7 +194,6 @@ class ImageList:
         Returns:
             an `ImageList`.
         """
-        breakpoint()
         assert len(tensors) > 0
         assert isinstance(tensors, (tuple, list))
         for t in tensors:
@@ -227,9 +226,14 @@ class ImageList:
         if len(tensors) == 1:
             # This seems slightly (2%) faster.
             # TODO: check whether it's faster for multiple images as well
-            image_size = image_sizes[0]
-            padding_size = [0, max_size[-1] - image_size[1], 0, max_size[-2] - image_size[0]]
-            batched_imgs = F.pad(tensors[0], padding_size, value=pad_value).unsqueeze_(0)
+
+            # AG: not sure what this was all about and why it's faster than just doing nothing
+            #
+            #image_size = image_sizes[0]
+            #padding_size = [0, max_size[-1] - image_size[1], 0, max_size[-2] - image_size[0]]
+            #batched_imgs = F.pad(tensors[0], padding_size, value=pad_value).unsqueeze_(0)
+            batched_imgs = tensors[0].unsqueeze(0)
+
         else:
             # max_size can be a tensor in tracing mode, therefore convert to list
             batch_shape = [len(tensors)] + list(tensors[0].shape[:-2]) + list(max_size)

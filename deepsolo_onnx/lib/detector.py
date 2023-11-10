@@ -194,6 +194,7 @@ class ImageList:
         Returns:
             an `ImageList`.
         """
+        breakpoint()
         assert len(tensors) > 0
         assert isinstance(tensors, (tuple, list))
         for t in tensors:

@@ -89,13 +89,13 @@ class VisImage:
 class Visualizer:
 
     def __init__(self, img_rgb, scale=1.0):
+        self.img = np.asarray(img_rgb).clip(0, 255).astype(np.uint8)
+        self.output = VisImage(self.img, scale=scale)
+
          # too small texts are useless, therefore clamp to 9
         self._default_font_size = max(
             np.sqrt(self.output.height * self.output.width) // 90, 10 // scale
         )
-
-        self.img = np.asarray(img_rgb).clip(0, 255).astype(np.uint8)
-        self.output = VisImage(self.img, scale=scale)
 
     def draw_polygon(self, segment, color, edge_color=None, alpha=0.5):
         """

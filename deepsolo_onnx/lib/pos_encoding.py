@@ -61,6 +61,7 @@ class PositionalEncoding2D(nn.Module):
         self.scale = scale
 
     def forward(self, tensors):
+        breakpoint()
         x = tensors.tensors
         mask = tensors.mask
         assert mask is not None

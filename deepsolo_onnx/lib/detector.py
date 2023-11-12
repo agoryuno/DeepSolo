@@ -556,15 +556,15 @@ class TransformerPureDetector(nn.Module):
         self.normalizer = lambda x: (x - pixel_mean) / pixel_std
         self.to(self.device)
 
-    def preprocess_image(self, batched_inputs):
+    def preprocess_image(self, batched_inputs: list[torch.Tensor]) -> torch.Tensor:
         """
         Normalize, pad and batch the input images.
         """
         breakpoint()
         images = [self.normalizer(x.to(self.device)) for x in batched_inputs]
-
-        images = ImageList.from_tensors(images)
-        return images
+        return torch.stack(images, dim=0)
+        #images = ImageList.from_tensors(images)
+        #return images
 
     def forward(self, batched_inputs):
         """

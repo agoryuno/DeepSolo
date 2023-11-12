@@ -561,7 +561,7 @@ class TransformerPureDetector(nn.Module):
         Normalize, pad and batch the input images.
         """
         breakpoint()
-        images = [self.normalizer(x["image"].to(self.device)) for x in batched_inputs]
+        images = [self.normalizer(x.to(self.device)) for x in batched_inputs]
         images = ImageList.from_tensors(images)
         return images
 
@@ -570,7 +570,7 @@ class TransformerPureDetector(nn.Module):
         Args:
             batched_inputs: a list, batched outputs of :class:`DatasetMapper` .
                 Each item in the list contains the inputs for one image.
-                For now, each item in the list is a dict that contains:
+                For now, each item in the list is a tuple that contains:
 
                 * image: Tensor, image in (C, H, W) format.
                 * instances (optional): groundtruth :class:`Instances`

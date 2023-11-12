@@ -32,7 +32,7 @@ class ColorMode(Enum):
 
 
 class TextVisualizer:
-    def __init__(self, image, instance_mode, cfg):
+    def __init__(self, cfg):
         #Visualizer.__init__(self, image, metadata, instance_mode=instance_mode)
         self.voc_size = cfg.MODEL.TRANSFORMER.VOC_SIZE
         self.use_customer_dictionary = cfg.MODEL.TRANSFORMER.CUSTOM_DICT

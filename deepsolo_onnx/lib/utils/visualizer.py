@@ -88,11 +88,14 @@ class VisImage:
 
 class Visualizer:
 
-    def __init__(self, scale=1.0):
+    def __init__(self, img_rgb, scale=1.0):
          # too small texts are useless, therefore clamp to 9
         self._default_font_size = max(
             np.sqrt(self.output.height * self.output.width) // 90, 10 // scale
         )
+
+        self.img = np.asarray(img_rgb).clip(0, 255).astype(np.uint8)
+        self.output = VisImage(self.img, scale=scale)
 
     def draw_polygon(self, segment, color, edge_color=None, alpha=0.5):
         """
@@ -155,8 +158,8 @@ class ColorMode(Enum):
 
 
 class TextVisualizer(Visualizer):
-    def __init__(self, cfg, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, image, cfg, **kwargs):
+        super().__init__(image, **kwargs)
         #Visualizer.__init__(self, image, metadata, instance_mode=instance_mode)
         self.voc_size = cfg.MODEL.TRANSFORMER.VOC_SIZE
         self.use_customer_dictionary = cfg.MODEL.TRANSFORMER.CUSTOM_DICT

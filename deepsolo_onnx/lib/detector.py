@@ -66,6 +66,7 @@ class MaskedBackbone(nn.Module):
         self.num_channels = backbone_shape[list(backbone_shape.keys())[-1]].channels
 
     def forward(self, images):
+        breakpoint()
         features = self.backbone(images.tensor)
         masks = self.mask_out_padding(
             [features_per_level.shape for features_per_level in features.values()],

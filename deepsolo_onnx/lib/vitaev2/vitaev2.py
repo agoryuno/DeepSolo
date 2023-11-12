@@ -238,10 +238,6 @@ class ViTAEv2(Backbone):
     
 
 def build_backbone(cfg) -> ViTAEv2:
-    #vitaev2_type = cfg.MODEL.ViTAEv2.TYPE
-
-    #assert vitaev2_type == 'vitaev2_s', (f"Wrong ViTAEv2 model type: '{vitaev2_type}'. "
-    #                                     f"Only 'vitaev2_s' is supported.")
     return ViTAEv2(
         in_chans=3,
         RC_tokens_type=['window', 'window', 'transformer', 'transformer'],

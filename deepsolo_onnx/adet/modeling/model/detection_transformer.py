@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from torch import nn
 import torch.nn.functional as F
+
 from ...layers.deformable_transformer import DeformableTransformer
 from ...utils.misc import (
     NestedTensor,

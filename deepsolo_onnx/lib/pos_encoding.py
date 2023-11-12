@@ -60,14 +60,9 @@ class PositionalEncoding2D(nn.Module):
             scale = 2 * np.pi
         self.scale = scale
 
-    def forward(self, tensors):
-        breakpoint()
-        x = tensors.tensors
-        mask = tensors.mask
-        assert mask is not None
-        not_mask = ~mask
-        y_embed = not_mask.cumsum(1, dtype=torch.float32)
-        x_embed = not_mask.cumsum(2, dtype=torch.float32)
+    def forward(self, x: torch.Tensor):
+        y_embed = torch.arange(1, x.shape[-1]+1).view(x.shape[-1], 1).expand(x.shape[:1] + x.shape[-2:]).to(x.device, dtype=torch.float32)
+        x_embed = torch.arange(1, x.shape[-1]+1).view(1, x.shape[-1]).expand(x.shape[:1] + x.shape[-2:]).to(x.device, dtype=torch.float32)
         if self.normalize:
             eps = 1e-6
             y_embed = (y_embed - 0.5) / (y_embed[:, -1:, :] + eps) * self.scale
@@ -75,7 +70,6 @@ class PositionalEncoding2D(nn.Module):
 
         dim_t = torch.arange(self.num_pos_feats, dtype=torch.float32, device=x.device)
         dim_t = self.temperature ** (2 * torch.div(dim_t, 2, rounding_mode='trunc') / self.num_pos_feats)
-
         pos_x = x_embed[:, :, :, None] / dim_t
         pos_y = y_embed[:, :, :, None] / dim_t
         pos_x = torch.stack((pos_x[:, :, :, 0::2].sin(), pos_x[:, :, :, 1::2].cos()), dim=4).flatten(3)

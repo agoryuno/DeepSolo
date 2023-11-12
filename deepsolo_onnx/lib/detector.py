@@ -45,6 +45,7 @@ class Joiner(nn.Sequential):
         super().__init__(backbone, position_embedding)
 
     def forward(self, tensor_list: NestedTensor):
+        breakpoint()
         xs = self[0](tensor_list)
         out: list[NestedTensor] = []
         pos = []
@@ -65,8 +66,7 @@ class MaskedBackbone(nn.Module):
         self.feature_strides = [backbone_shape[f].stride for f in backbone_shape.keys()]
         self.num_channels = backbone_shape[list(backbone_shape.keys())[-1]].channels
 
-    def forward(self, images):
-        breakpoint()
+    def forward(self, images: "ImageList"):
         features = self.backbone(images.tensor)
         #masks = self.mask_out_padding(
         #    [features_per_level.shape for features_per_level in features.values()],
@@ -561,7 +561,6 @@ class TransformerPureDetector(nn.Module):
         """
         Normalize, pad and batch the input images.
         """
-        breakpoint()
         images = [self.normalizer(x.to(self.device)) for x in batched_inputs]
         images = ImageList.from_tensors(images)
         return images

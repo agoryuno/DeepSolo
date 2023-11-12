@@ -217,8 +217,10 @@ class ViTAEv2(Backbone):
 
         self.apply(_init_weights)
 
-    def forward(self, x):
-        """Forward function."""
+    def forward(self, x: torch.Tensor):
+        """Forward function.
+        x has shape (B, C, H ,W)
+        """
         outs = {}
         b, _, h, w = x.shape
         for idx, layer in enumerate(self.layers):

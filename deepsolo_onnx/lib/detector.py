@@ -18,7 +18,7 @@ from ..adet.modeling.model.matcher import build_matcher
 ##########################################################################
 ####### The stuff in this block is slated for removal ####################
 ##########################################################################
-class NestedTensor(object):
+class NestedTensor:
     def __init__(self, tensors, mask: Optional[torch.Tensor]):
         self.tensors = tensors
         self.mask = mask
@@ -44,15 +44,15 @@ class Joiner(nn.Sequential):
     def __init__(self, backbone, position_embedding):
         super().__init__(backbone, position_embedding)
 
-    def forward(self, tensor_list: NestedTensor):
+    def forward(self, tensor_list: "ImageList"):
         breakpoint()
         xs = self[0](tensor_list)
-        out: list[NestedTensor] = []
+        out: list[ImageList] = []
         pos = []
         for _, x in xs.items():
             out.append(x)
             # position encoding
-            pos.append(self[1](x).to(x.tensors.dtype))
+            pos.append(self[1](x).to(x.tensor.dtype))
 
         return out, pos
 

@@ -11,6 +11,7 @@ import math
 import operator
 from functools import reduce
 
+
 class TextVisualizer(Visualizer):
     def __init__(self, image, metadata, instance_mode, cfg):
         Visualizer.__init__(self, image, metadata, instance_mode=instance_mode)
@@ -24,7 +25,7 @@ class TextVisualizer(Visualizer):
             with open(self.use_customer_dictionary, 'rb') as fp:
                 self.CTLABELS = pickle.load(fp)
         # voc_size includes the unknown class, which is not in self.CTABLES
-        assert(int(self.voc_size - 1) == len(self.CTLABELS)), "voc_size is not matched dictionary size, got {} and {}.".format(int(self.voc_size - 1), len(self.CTLABELS))
+        assert(int(self.voc_size - 1) == len(self.CTLABELS)), f"voc_size is not matched dictionary size, got {int(self.voc_size - 1)} and {len(self.CTLABELS)}."
 
     def draw_instance_predictions(self, predictions):
         ctrl_pnts = predictions.ctrl_points.numpy()

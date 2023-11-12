@@ -30,6 +30,8 @@ setup(
     packages=find_packages(exclude=["adet", "adet.*"]),
     python_requires=">=3.10, <3.12",
     install_requires=[
+        "shapely",
+        "matplotlib",
         "torch",
         "fvcore",
         "timm",

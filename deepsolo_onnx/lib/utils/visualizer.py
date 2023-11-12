@@ -12,6 +12,12 @@ import matplotlib.font_manager as mfm
 
 class Visualizer:
 
+    def __init__(self, scale=1.0):
+         # too small texts are useless, therefore clamp to 9
+        self._default_font_size = max(
+            np.sqrt(self.output.height * self.output.width) // 90, 10 // scale
+        )
+
     def draw_polygon(self, segment, color, edge_color=None, alpha=0.5):
         """
         Args:
@@ -73,7 +79,8 @@ class ColorMode(Enum):
 
 
 class TextVisualizer(Visualizer):
-    def __init__(self, cfg):
+    def __init__(self, cfg, **kwargs):
+        super().__init__(**kwargs)
         #Visualizer.__init__(self, image, metadata, instance_mode=instance_mode)
         self.voc_size = cfg.MODEL.TRANSFORMER.VOC_SIZE
         self.use_customer_dictionary = cfg.MODEL.TRANSFORMER.CUSTOM_DICT

@@ -161,6 +161,9 @@ class DETECTION_TRANSFORMER(nn.Module):
 
     def forward(self, samples: torch.Tensor):
         breakpoint()
+        features: dict[str, torch.Tensor]
+        pos: torch.Tensor  
+        
         features, pos = self.backbone(samples)
 
         srcs = []

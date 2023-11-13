@@ -44,7 +44,7 @@ class Joiner(nn.Sequential):
     def __init__(self, backbone, position_embedding):
         super().__init__(backbone, position_embedding)
 
-    def forward(self, xs: torch.Tensor):
+    def forward(self, xs: torch.Tensor) -> tuple[dict, torch.Tensor]:
         breakpoint()
 
         # self[0] is the backbone
@@ -63,7 +63,7 @@ class MaskedBackbone(nn.Module):
         self.feature_strides = [backbone_shape[f].stride for f in backbone_shape.keys()]
         self.num_channels = backbone_shape[list(backbone_shape.keys())[-1]].channels
 
-    def forward(self, x: torch.Tensor):
+    def forward(self, x: torch.Tensor) -> dict:
         """
         x - (B, C, H, W)
         """

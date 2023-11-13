@@ -167,12 +167,8 @@ class DETECTION_TRANSFORMER(nn.Module):
         features, pos = self.backbone(samples)
 
         srcs = []
-        masks = []
         for l, feat in enumerate(features):
-            src, mask = feat.decompose()
-            srcs.append(self.input_proj[l](src))
-            masks.append(mask)
-            assert mask is not None
+            srcs.append(self.input_proj[l](feat))
         if self.num_feature_levels > len(srcs):
             _len_srcs = len(srcs)
             for l in range(_len_srcs, self.num_feature_levels):

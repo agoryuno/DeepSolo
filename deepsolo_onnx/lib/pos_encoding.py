@@ -61,6 +61,7 @@ class PositionalEncoding2D(nn.Module):
         self.scale = scale
 
     def forward(self, x: torch.Tensor):
+        breakpoint
         y_embed = torch.arange(1, x.shape[-1]+1).view(x.shape[-1], 1).expand(x.shape[:1] + x.shape[-2:]).to(x.device, dtype=torch.float32)
         x_embed = torch.arange(1, x.shape[-1]+1).view(1, x.shape[-1]).expand(x.shape[:1] + x.shape[-2:]).to(x.device, dtype=torch.float32)
         if self.normalize:

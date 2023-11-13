@@ -587,15 +587,19 @@ class TransformerPureDetector(nn.Module):
         ctrl_point_coord = output["pred_ctrl_points"]
         ctrl_point_text = output["pred_text_logits"]
         bd_points = output["pred_bd_points"]
-        results = self.inference(
-            ctrl_point_cls,
+
+        return (ctrl_point_cls,
             ctrl_point_coord,
             ctrl_point_text,
             bd_points,
-            images.image_sizes
-        )
-
-        return results
+            images.image_sizes)
+        #results = self.inference(
+        #    ctrl_point_cls,
+        #    ctrl_point_coord,
+        #    ctrl_point_text,
+        #    bd_points,
+        #    images.image_sizes
+        #)
 
         #processed_results = []
         #for results_per_image, input_per_image, image_size in zip(results, batched_inputs, images.image_sizes):

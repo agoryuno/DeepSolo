@@ -560,7 +560,6 @@ class TransformerPureDetector(nn.Module):
         """
         Normalize, pad and batch the input images.
         """
-        breakpoint()
         images = [self.normalizer(x.to(self.device)) for x in batched_inputs]
         images = ImageList.from_tensors(images)
         return images

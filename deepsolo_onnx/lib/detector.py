@@ -46,15 +46,12 @@ class Joiner(nn.Sequential):
 
     def forward(self, xs: torch.Tensor):
         breakpoint()
-        xs = self[0](xs)
-        out: list[ImageList] = []
-        pos = []
-        for _, x in xs.items():
-            out.append(x)
-            # position encoding
-            pos.append(self[1](x).to(x.tensor.dtype))
 
-        return out, pos
+        # self[0] is the backbone
+        # self[1] is the positional encoder
+        features = self[0](xs)
+        pos = self[1](xs).to(xs.dtype)
+        return features, pos
 
 
 class MaskedBackbone(nn.Module):

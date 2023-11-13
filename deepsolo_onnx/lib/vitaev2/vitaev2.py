@@ -255,7 +255,7 @@ def build_backbone(cfg) -> ViTAEv2:
         mlp_ratio=4.,
         NC_group=[1, 32, 64, 128],
         RC_group=[1, 16, 32, 64],
-        use_checkpoint=True,
+        use_checkpoint=False,
         drop_rate=0.,
         attn_drop_rate=0.,
         window_size=7,

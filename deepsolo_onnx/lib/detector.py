@@ -70,6 +70,7 @@ class MaskedBackbone(nn.Module):
         """
         x - (B, C, H, W)
         """
+        breakpoint()
         features = self.backbone(x)
         #masks = self.mask_out_padding(
         #    [features_per_level.shape for features_per_level in features.values()],

@@ -66,8 +66,11 @@ class MaskedBackbone(nn.Module):
         self.feature_strides = [backbone_shape[f].stride for f in backbone_shape.keys()]
         self.num_channels = backbone_shape[list(backbone_shape.keys())[-1]].channels
 
-    def forward(self, images: "ImageList"):
-        features = self.backbone(images.tensor)
+    def forward(self, x: torch.Tensor):
+        """
+        x - (B, C, H, W)
+        """
+        features = self.backbone(x)
         #masks = self.mask_out_padding(
         #    [features_per_level.shape for features_per_level in features.values()],
         #    images.image_sizes,

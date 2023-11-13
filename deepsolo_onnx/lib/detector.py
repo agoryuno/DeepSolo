@@ -594,14 +594,17 @@ class TransformerPureDetector(nn.Module):
             bd_points,
             images.image_sizes
         )
-        processed_results = []
-        for results_per_image, input_per_image, image_size in zip(results, batched_inputs, images.image_sizes):
-            height = image_size[0]
-            width = image_size[1]
-            r = detector_postprocess(results_per_image, height, width, self.min_size_test, self.max_size_test)
-            processed_results.append({"instances": r})
 
-        return processed_results
+        return results
+
+        #processed_results = []
+        #for results_per_image, input_per_image, image_size in zip(results, batched_inputs, images.image_sizes):
+        #    height = image_size[0]
+        #    width = image_size[1]
+        #    r = detector_postprocess(results_per_image, height, width, self.min_size_test, self.max_size_test)
+        #    processed_results.append({"instances": r})
+
+        #return processed_results
 
     def prepare_targets(self, targets):
         new_targets = []

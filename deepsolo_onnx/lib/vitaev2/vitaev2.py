@@ -221,6 +221,7 @@ class ViTAEv2(Backbone):
         """Forward function.
         x has shape (B, C, H ,W)
         """
+        breakpoint()
         outs = {}
         b, _, h, w = x.shape
         for idx, layer in enumerate(self.layers):
